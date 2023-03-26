@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState  } from "react";
 import { Button, Card, Form, Grid } from "semantic-ui-react";
+import { useSimpleDispatch } from "../store";
+import { connect } from 'react-redux';
 import styled from "styled-components";
 
 const StyledCenter = styled.div`
   text-align: center;
 `;
 
-const Login = () => {
+const Login = ({ isValidUser }) => {
   const inputRef = useRef();
+  console.log(isValidUser);
 
   useEffect(() => {
     inputRef.current.focus();
@@ -15,7 +18,6 @@ const Login = () => {
 
   const [username, setUsername] = useState('');
   const [pword, setpword] = useState('');
-  const [isValidUser, setIsValidUser] = useState(false);
 
   const nameHandler = (event) => (setUsername(event.target.value));
   const pwordHandler = (event) => (setpword(event.target.value));
@@ -24,11 +26,14 @@ const Login = () => {
   const ispwordValid = pword.length > 5;
   const isSubmitInvalid = !(isusernameValid && ispwordValid);
 
+  const loginStateUpdate = useSimpleDispatch('setupLoginStatus');
   const submitHandler = (event) => {
     event.preventDefault();
     if (username === 'thein' && pword === '123321') {
-      setIsValidUser(true)
+      loginStateUpdate({ isValidUser: true })  
     }
+    setUsername('');
+    setpword('');
   }
 
   return (
@@ -61,4 +66,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default connect((state) => ({ isValidUser: state.isValidUser }))(Login);
