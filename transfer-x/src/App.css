@@ -1,6 +1,9 @@
 .appContainer {
+  height: 100vh; /* sets the height of the container to fill the entire viewport */
+  width: 100%; /* sets the width of the container to fill the entire viewport */
   background-image: url('./assets/images/bg.jpg');
   background-size: cover;
+  overflow: hidden;
   position: relative;
 }
 
