@@ -6,7 +6,8 @@ import { connect } from "react-redux";
 function App({ isValidUser }) {
   return (
     <div className="appContainer">
-      {isValidUser ? <Transfer /> : <Login />}
+      {/* {isValidUser ? <Transfer /> : <Login />} */}
+      <Transfer />
       <div className="backgroundcover-text">
         <a href="https://www.freepik.com/free-vector/abstract-blue-geometric-shapes-background_6166980.htm#query=background&position=4&from_view=keyword&track=sph">Image by Harryarts</a>
       </div>

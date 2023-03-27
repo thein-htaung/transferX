@@ -16,3 +16,10 @@
   text-align: right;
   font-size: 12px;
 }
+
+.center-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
